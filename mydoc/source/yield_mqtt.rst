@@ -113,7 +113,12 @@
                 mqtt_debug("PUBLISH");
                 /* HEXDUMP_DEBUG(c->buf_read, 32); */
 
-                rc = iotx_mc_handle_recv_PUBLISH(c);
+                rc = iotx_mc_handle_recv_PUBLISH(c); 
+                    //call iotx_mc_deliver_message()
+                        //订阅某个topic注册的 回调处理函数
+                        //msg.event_type = IOTX_MQTT_EVENT_PUBLISH_RECEIVED;
+                        //msg.msg = (void *)topic_msg;
+                        //_handle_event(&msg_handle->handle, c, &msg);                    
                 if (SUCCESS_RETURN != rc) {
                     mqtt_err("recvPublishProc error,result = %d", rc);
                 }
