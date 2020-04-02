@@ -30,7 +30,8 @@
   
 
   
-    <link rel="top" title="iot 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="iot 1.0 documentation" href="index.html"/>
+        <link rel="prev" title="事件处理" href="dispatch.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,7 +80,7 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="diagram.html">流程图</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">主循环</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conn_yield_setup.html">连接handle设置</a></li>
@@ -87,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="conn_read.html">连接层读取报文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcp_read.html">传输层读取数据</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dispatch.html">事件处理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">总结</a></li>
 </ul>
 
             
@@ -131,14 +133,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>总结<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="summary">
+<span id="id1"></span><h1>总结<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header row, column 1</th>
+<th class="head">Header 2</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1.应用层代码循环调用sdk的轮询函数，轮询函数阻塞N毫秒</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>2.传输层抽象出了一套接口， mqtt,coap层根据参数和配置，
+通过接口调用tcp或ssl</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>3.上层主动从传输层读取数据，select阻塞的方式，
+设置总的超时阻塞时间。</td>
+<td>如果一个连接没有数据包，
+固定阻塞如200ms，才能处理下一个连接</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="dispatch.html" class="btn btn-neutral" title="事件处理" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
